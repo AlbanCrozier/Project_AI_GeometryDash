@@ -27,6 +27,7 @@ public class ManualPlayerTests : MonoBehaviour
     {
         // 1. Déplacement constant (Vitesse X forcée, Vitesse Y libre pour le saut)
         rb.velocity = new Vector2(speed, rb.velocity.y);
+        
 
         // 2. Saut (Espace ou Clic Gauche)
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && isGrounded)
@@ -43,23 +44,9 @@ public class ManualPlayerTests : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Block")) // Donne le tag "Block" à tes carrés
+        if (collision.collider.CompareTag("Ground")) 
         {
-            // On récupère le point de contact
-            Vector2 contactNormal = collision.GetContact(0).normal;
-
-            // Si la normale pointe vers le haut (0, 1), on est sur le dessus
-            if (contactNormal.y > 0.5f)
-            {
-                isGrounded = true;
-                
-            }
-            // Si la normale est horizontale (contact sur le côté)
-            else if (Mathf.Abs(contactNormal.x) > 0.5f)
-            {
-
-                RestartPosition(); // Mort !
-            }
+            isGrounded = true;
         }
         if (collision.collider.CompareTag("Obstacle"))
         {
