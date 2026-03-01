@@ -6028,6 +6028,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea
       objectReference: {fileID: 0}
+    - target: {fileID: 7127026385883476913, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
+      propertyPath: m_RayLength
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127026385883476913, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
+      propertyPath: rayHitColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127026385883476913, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
+      propertyPath: rayHitColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127026385883476913, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
+      propertyPath: rayHitColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127026385883476913, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
+      propertyPath: m_MaxRayDegrees
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127026385883476913, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
+      propertyPath: m_RaysPerDirection
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127026385883476913, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
+      propertyPath: m_SphereCastRadius
+      value: 3.93
+      objectReference: {fileID: 0}
     - target: {fileID: 7768826860535825836, guid: b33fd1c6d30ab9f47b000a8d043603aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.090157

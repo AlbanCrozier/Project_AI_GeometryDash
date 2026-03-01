@@ -30,6 +30,7 @@ public class PlayerAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         // 1. Vitesse constante (indispensable pour Geometry Dash)
+
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
         // 2. Décision de saut
