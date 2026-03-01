@@ -5,42 +5,41 @@ using Unity.MLAgents.Sensors;
 
 public class PlayerAgent : Agent
 {
-    public float speed = 8f;
-    public float jumpForce = 12f;
-    public Transform startPoint; // Un objet vide placé au début du niveau
+    [Header("Réglages Physiques")]
+    public float speed = 10.4f;
+    public float jumpForce = 15f;
+    public Transform startPoint;
 
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    // Remplace Start()
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true; // Empêche le cube de rouler
     }
 
-    // Appelé à chaque fois que le cube meurt (Reset)
     public override void OnEpisodeBegin()
     {
+        // Reset position et physique
         transform.position = startPoint.position;
         rb.velocity = Vector2.zero;
         isGrounded = false;
     }
 
-    // Pour le mouvement constant et les décisions de l'IA
     public override void OnActionReceived(ActionBuffers actions)
     {
-        // Vitesse constante sur X
+        // 1. Vitesse constante (indispensable pour Geometry Dash)
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
-        // L'IA décide de sauter (Action 1)
-        int jumpAction = actions.DiscreteActions[0];
-        if (jumpAction == 1 && isGrounded)
+        // 2. Décision de saut
+        if (actions.DiscreteActions[0] == 1 && isGrounded)
         {
             Jump();
         }
 
-        // Récompense : on encourage l'IA à rester en vie le plus longtemps possible
-        AddReward(0.01f);
+        // 3. Récompense de survie (très légère)
+        AddReward(0.001f);
     }
 
     void Jump()
@@ -49,32 +48,45 @@ public class PlayerAgent : Agent
         isGrounded = false;
     }
 
-    // Permet de tester au clavier même avec ML-Agents
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActions = actionsOut.DiscreteActions;
+        // On peut tester avec Espace au clavier
         discreteActions[0] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Si on touche le sol
         if (collision.collider.CompareTag("Ground"))
         {
-            isGrounded = true;
+            // Vérification : on ne valide le sol que si on le touche par le dessus
+            if (collision.GetContact(0).normal.y > 0.5f)
+            {
+                isGrounded = true;
+            }
+            else // Si on touche le MUR d'un bloc de sol
+            {
+                SetReward(-1.0f);
+                EndEpisode();
+            }
         }
+
+        // Si on touche un pic ou un danger
         if (collision.collider.CompareTag("Obstacle"))
         {
             SetReward(-1.0f);
             EndEpisode();
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Finish"))
         {
-            SetReward(2.0f); // Une grosse récompense positive !
-            Debug.Log("Niveau terminé ! Bravo l'IA.");
-            EndEpisode();    // On recommence pour renforcer l'apprentissage
+            SetReward(2.0f);
+            Debug.Log("Succès !");
+            EndEpisode();
         }
     }
 }

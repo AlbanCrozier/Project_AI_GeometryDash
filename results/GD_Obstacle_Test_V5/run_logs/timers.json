@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1772376383",
+        "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\33610\\anaconda3\\envs\\mlagents\\Scripts\\mlagents-learn config_ia.yaml --run-id=GD_Obstacle_Test_V5",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.10.0+cpu",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1772376483"
+    },
+    "total": 99.80313250003383,
+    "count": 1,
+    "self": 0.22192749998066574,
+    "children": {
+        "run_training.setup": {
+            "total": 0.3089353000978008,
+            "count": 1,
+            "self": 0.3089353000978008
+        },
+        "TrainerController.start_learning": {
+            "total": 99.27226969995536,
+            "count": 1,
+            "self": 0.0640284001128748,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 99.2057261998998,
+                    "count": 1,
+                    "self": 99.2057261998998
+                },
+                "trainer_threads": {
+                    "total": 1.0499963536858559e-05,
+                    "count": 1,
+                    "self": 1.0499963536858559e-05
+                },
+                "TrainerController._save_models": {
+                    "total": 0.002504599979147315,
+                    "count": 1,
+                    "self": 0.002504599979147315
+                }
+            }
+        }
+    }
+}
