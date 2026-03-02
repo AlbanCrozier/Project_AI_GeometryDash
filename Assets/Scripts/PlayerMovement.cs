@@ -57,7 +57,7 @@ public class PlayerAgent : Agent
         }
 
         // 3. Récompense de survie (très légère)
-        AddReward(0.001f);
+        // AddReward(0.001f);
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -103,13 +103,12 @@ public class PlayerAgent : Agent
             float velocityY = rb.velocity.y;
             float normalY = collision.GetContact(0).normal.y;
 
-            if (normalY > 0.5f)
+            if (normalY > 0.1f)
             {
                 isGrounded = true;
             }
             else // Si on touche le MUR d'un bloc de sol
             {
-                Debug.Log("Collision avec le mur détectée !");
                 AddReward(-3.0f); // Pénalité pour toucher un mur
                 EndEpisode();
             }
@@ -142,11 +141,9 @@ public class PlayerAgent : Agent
             }
             if (checkpointBehavior.IsActivated())
             {
-                Debug.Log("Checkpoint déjà activé, pas de récompense supplémentaire.");
                 return;
             }
             AddReward(1.5f);
-            Debug.Log("Checkpoint atteint !");
         }
     }
 }
