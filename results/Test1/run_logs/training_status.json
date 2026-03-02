@@ -1,0 +1,47 @@
+{
+    "GeometryDash": {
+        "checkpoints": [
+            {
+                "steps": 499999,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-499999.onnx",
+                "reward": 0.12218059664187224,
+                "creation_time": 1772485135.1902184,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-499999.pt"
+                ]
+            },
+            {
+                "steps": 500045,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-500045.onnx",
+                "reward": 0.1228461515756301,
+                "creation_time": 1772485135.2528207,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-500045.pt"
+                ]
+            },
+            {
+                "steps": 500045,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-500045.onnx",
+                "reward": null,
+                "creation_time": 1772485491.982601,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-500045.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500045,
+            "file_path": "results\\Test1\\GeometryDash.onnx",
+            "reward": null,
+            "creation_time": 1772485491.982601,
+            "auxillary_file_paths": [
+                "results\\Test1\\GeometryDash\\GeometryDash-500045.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.2.0.dev0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
