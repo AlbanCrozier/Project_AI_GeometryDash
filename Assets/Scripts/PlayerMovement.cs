@@ -5,7 +5,7 @@ using Unity.MLAgents.Sensors;
 
 public class PlayerAgent : Agent
 {
-    [Header("Réglages Physiques")]
+    [Header("RÃ©glages Physiques")]
     public float speed = 10.4f;
     public float jumpForce = 10f;
     public Transform startPoint;
@@ -13,51 +13,53 @@ public class PlayerAgent : Agent
     private float cameraOffsetY = 2f;
     private float cameraOffsetZ = -10f;
 
+    [Header("Reinforcement Settings")]
+    //public float survivalRewardRate = 0.5f; // reward par seconde
+    public float jumpPenalty = -0.2f; // pÃ©nalitÃ© par saut
+
     private Rigidbody2D rb;
     private bool isGrounded;
 
     private int startTime;
-    private int maxEpisodeLength = 6000; // Limite de frames par épisode
+    private int maxEpisodeLength = 6000; // Limite de frames par Ã©pisode
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true; // Empêche le cube de rouler
+        rb.freezeRotation = true;
     }
 
     public override void OnEpisodeBegin()
     {
-        // Reset position et physique
         transform.position = startPoint.position;
         rb.velocity = Vector2.zero;
         isGrounded = true;
-        startTime = Time.frameCount; // Enregistre le temps de début de l'épisode
+        startTime = Time.frameCount;
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
         updateCameraPosition();
 
-        // Check if episode is too long (par exemple, si le joueur stagne ou ne fait pas de progrès)
-        if (Time.frameCount - startTime > maxEpisodeLength) // Limite de 1000 frames par épisode
+        // Reward proportionnel au temps de survie
+        //AddReward(survivalRewardRate * Time.fixedDeltaTime);
+
+        // Limite de durÃ©e dâ€™Ã©pisode
+        if (Time.frameCount - startTime > maxEpisodeLength)
         {
-            SetReward(0); // Probablement une erreur du code, dans le doute on compte pas
             EndEpisode();
             return;
         }
 
-        // 1. Vitesse constante (indispensable pour Geometry Dash)
-
+        // Mouvement horizontal constant
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
-        // 2. Décision de saut
+        // DÃ©cision de saut
         if (actions.DiscreteActions[0] == 1 && isGrounded)
         {
+            AddReward(jumpPenalty); // pÃ©nalitÃ© pour Ã©viter les sauts inutiles
             Jump();
         }
-
-        // 3. Récompense de survie (très légère)
-        // AddReward(0.001f);
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -77,11 +79,10 @@ public class PlayerAgent : Agent
         Camera mainCamera = Camera.main;
         if (mainCamera != null)
         {
-            // Move camera to follow the player
             Vector3 cameraPosition = startPoint.position;
-            cameraPosition.x = transform.position.x + cameraOffsetX; // Suivre le joueur en X
-            cameraPosition.y = cameraPosition.y + cameraOffsetY; // Suivre le joueur en Y
-            cameraPosition.z = cameraPosition.z + cameraOffsetZ; // S'assurer que la caméra reste à une distance fixe en Z
+            cameraPosition.x = transform.position.x + cameraOffsetX;
+            cameraPosition.y = cameraPosition.y + cameraOffsetY;
+            cameraPosition.z = cameraPosition.z + cameraOffsetZ;
             mainCamera.transform.position = cameraPosition;
         }
     }
@@ -89,7 +90,6 @@ public class PlayerAgent : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActions = actionsOut.DiscreteActions;
-        // On peut tester avec Espace au clavier
         discreteActions[0] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 
@@ -97,27 +97,24 @@ public class PlayerAgent : Agent
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-        // Si on touche le sol
         if (collision.collider.CompareTag("Ground"))
         {
-            float velocityY = rb.velocity.y;
             float normalY = collision.GetContact(0).normal.y;
 
             if (normalY > 0.1f)
             {
                 isGrounded = true;
             }
-            else // Si on touche le MUR d'un bloc de sol
+            else
             {
-                AddReward(-3.0f); // Pénalité pour toucher un mur
+                AddReward(-3.0f);
                 EndEpisode();
             }
         }
 
-        // Si on touche un pic ou un danger
         if (collision.collider.CompareTag("Obstacle"))
         {
-            AddReward(-3.0f); // Pénalité pour toucher un obstacle
+            AddReward(-3.0f);
             EndEpisode();
         }
     }
@@ -126,8 +123,8 @@ public class PlayerAgent : Agent
     {
         if (other.CompareTag("Finish"))
         {
-            AddReward(10.0f); // Récompense de fin de niveau
-            Debug.Log("Succès !");
+            AddReward(10.0f);
+            Debug.Log("Succes !");
             EndEpisode();
         }
 
@@ -136,13 +133,15 @@ public class PlayerAgent : Agent
             CheckpointBehavior checkpointBehavior = other.GetComponent<CheckpointBehavior>();
             if (!checkpointBehavior)
             {
-                Debug.LogError("Checkpoint sans CheckpointBehavior détecté ! PAS NORMAL");
+                Debug.LogError("Checkpoint sans CheckpointBehavior detecte ! PAS NORMAL");
                 return;
             }
+
             if (checkpointBehavior.IsActivated())
             {
                 return;
             }
+
             AddReward(1.5f);
         }
     }
