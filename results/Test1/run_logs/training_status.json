@@ -1,0 +1,65 @@
+{
+    "GeometryDash": {
+        "checkpoints": [
+            {
+                "steps": 849958,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-849958.onnx",
+                "reward": 0.14670096157829543,
+                "creation_time": 1772486115.0532875,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-849958.pt"
+                ]
+            },
+            {
+                "steps": 899991,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-899991.onnx",
+                "reward": 0.16027270555496215,
+                "creation_time": 1772486167.4663076,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-899991.pt"
+                ]
+            },
+            {
+                "steps": 949994,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-949994.onnx",
+                "reward": 0.14666935465983208,
+                "creation_time": 1772486223.5789826,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-949994.pt"
+                ]
+            },
+            {
+                "steps": 999970,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-999970.onnx",
+                "reward": 0.20359712889214523,
+                "creation_time": 1772486277.7357347,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-999970.pt"
+                ]
+            },
+            {
+                "steps": 1000016,
+                "file_path": "results\\Test1\\GeometryDash\\GeometryDash-1000016.onnx",
+                "reward": 0.20381715695063274,
+                "creation_time": 1772486277.799456,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GeometryDash\\GeometryDash-1000016.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000016,
+            "file_path": "results\\Test1\\GeometryDash.onnx",
+            "reward": 0.20381715695063274,
+            "creation_time": 1772486277.799456,
+            "auxillary_file_paths": [
+                "results\\Test1\\GeometryDash\\GeometryDash-1000016.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.2.0.dev0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
