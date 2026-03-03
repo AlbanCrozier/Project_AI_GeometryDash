@@ -1,0 +1,47 @@
+{
+    "GeometryDash": {
+        "checkpoints": [
+            {
+                "steps": 49987,
+                "file_path": "results\\GD_Obstacle_Test_V23\\GeometryDash\\GeometryDash-49987.onnx",
+                "reward": -3.0,
+                "creation_time": 1772545783.2599063,
+                "auxillary_file_paths": [
+                    "results\\GD_Obstacle_Test_V23\\GeometryDash\\GeometryDash-49987.pt"
+                ]
+            },
+            {
+                "steps": 99992,
+                "file_path": "results\\GD_Obstacle_Test_V23\\GeometryDash\\GeometryDash-99992.onnx",
+                "reward": -3.0,
+                "creation_time": 1772545879.1438808,
+                "auxillary_file_paths": [
+                    "results\\GD_Obstacle_Test_V23\\GeometryDash\\GeometryDash-99992.pt"
+                ]
+            },
+            {
+                "steps": 123778,
+                "file_path": "results\\GD_Obstacle_Test_V23\\GeometryDash\\GeometryDash-123778.onnx",
+                "reward": -3.0,
+                "creation_time": 1772546009.648454,
+                "auxillary_file_paths": [
+                    "results\\GD_Obstacle_Test_V23\\GeometryDash\\GeometryDash-123778.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 123778,
+            "file_path": "results\\GD_Obstacle_Test_V23\\GeometryDash.onnx",
+            "reward": -3.0,
+            "creation_time": 1772546009.648454,
+            "auxillary_file_paths": [
+                "results\\GD_Obstacle_Test_V23\\GeometryDash\\GeometryDash-123778.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.1.2+cpu"
+    }
+}
