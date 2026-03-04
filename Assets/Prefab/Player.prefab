@@ -180,9 +180,10 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  speed: 12.96
+  speed: 10.04
   jumpForce: 26.6581
   startPoint: {fileID: 0}
+  jumpPenalty: 0
 --- !u!114 &1260157851976539005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 0
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -412,7 +413,7 @@ MonoBehaviour:
   - Obstacle
   - Ground
   m_RaysPerDirection: 6
-  m_MaxRayDegrees: 75
+  m_MaxRayDegrees: 80
   m_SphereCastRadius: 0.1
   m_RayLength: 15
   m_RayLayerMask:

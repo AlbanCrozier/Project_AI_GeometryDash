@@ -1,0 +1,65 @@
+{
+    "GeometryDash": {
+        "checkpoints": [
+            {
+                "steps": 649978,
+                "file_path": "results\\NewTrain\\GeometryDash\\GeometryDash-649978.onnx",
+                "reward": 19.0,
+                "creation_time": 1772559525.283329,
+                "auxillary_file_paths": [
+                    "results\\NewTrain\\GeometryDash\\GeometryDash-649978.pt"
+                ]
+            },
+            {
+                "steps": 699977,
+                "file_path": "results\\NewTrain\\GeometryDash\\GeometryDash-699977.onnx",
+                "reward": 20.75,
+                "creation_time": 1772559582.4288435,
+                "auxillary_file_paths": [
+                    "results\\NewTrain\\GeometryDash\\GeometryDash-699977.pt"
+                ]
+            },
+            {
+                "steps": 749982,
+                "file_path": "results\\NewTrain\\GeometryDash\\GeometryDash-749982.onnx",
+                "reward": 32.5,
+                "creation_time": 1772559638.8942103,
+                "auxillary_file_paths": [
+                    "results\\NewTrain\\GeometryDash\\GeometryDash-749982.pt"
+                ]
+            },
+            {
+                "steps": 761220,
+                "file_path": "results\\NewTrain\\GeometryDash\\GeometryDash-761220.onnx",
+                "reward": 32.5,
+                "creation_time": 1772559674.7112439,
+                "auxillary_file_paths": [
+                    "results\\NewTrain\\GeometryDash\\GeometryDash-761220.pt"
+                ]
+            },
+            {
+                "steps": 781220,
+                "file_path": "results\\NewTrain\\GeometryDash\\GeometryDash-781220.onnx",
+                "reward": 32.5,
+                "creation_time": 1772564697.1682572,
+                "auxillary_file_paths": [
+                    "results\\NewTrain\\GeometryDash\\GeometryDash-781220.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 781220,
+            "file_path": "results\\NewTrain\\GeometryDash.onnx",
+            "reward": 32.5,
+            "creation_time": 1772564697.1682572,
+            "auxillary_file_paths": [
+                "results\\NewTrain\\GeometryDash\\GeometryDash-781220.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.2.0.dev0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
